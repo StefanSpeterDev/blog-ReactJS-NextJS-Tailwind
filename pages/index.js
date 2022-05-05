@@ -1,17 +1,8 @@
 import Head from 'next/head'
+import { PostCard, Categories, PostWidget } from '../components'
+import { getPosts } from '../services'
 
-const posts = [
-  {
-    title: 'React test',
-    excerpt: 'Learn react test',
-  },
-  {
-    title: 'React w tailwind',
-    excerpt: 'Learn react w tailwind',
-  },
-]
-
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div className="container mx-auto mb-8 px-1">
       <Head>
@@ -19,21 +10,31 @@ export default function Home() {
         <link ref="icon" href="/favicon.ico" />
       </Head>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-        <div className='col-span-1 lg:col-span-8 '>
+        <div className="col-span-1 lg:col-span-8 ">
           {posts.map((item) => (
-            <div>
-              {item.title}
-              <br />
-              {item.excerpt}
-            </div>
+            <PostCard post={item} key={item.title} />
           ))}
         </div>
         <div className="col-span-1 lg:col-span-4 ">
-          <div className='relative top-8 lg:sticky'>
-            
+          <div className="relative top-8 lg:sticky">
+            <PostWidget />
+            <Categories />
           </div>
         </div>
       </div>
     </div>
   )
+}
+
+// Thanks to NextJS, we can fetch data this way instead of inside useEffect()
+// getStaticProps send data directly to our component as props
+export async function getStaticProps() {
+  // get the posts, if empty, return an empty array
+  const posts = (await getPosts()) || []
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
