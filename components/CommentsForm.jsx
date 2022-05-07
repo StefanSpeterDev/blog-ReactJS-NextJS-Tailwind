@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 
+import { submitComment } from '../services'
+
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false)
   const [localStorage, setLocalStorage] = useState(null)
@@ -9,6 +11,12 @@ const CommentsForm = ({ slug }) => {
   const nameEl = useRef()
   const emailEl = useRef()
   const storeDataEl = useRef()
+
+  // To only check the value of the storage data once when we render the component
+  useEffect(() => {
+    nameEl.current.value = window.localStorage.getItem('name')
+    emailEl.current.value = window.localStorage.getItem('email')
+  }, [])
 
   const handleCommentSubmission = () => {
     setError(false)
@@ -26,18 +34,27 @@ const CommentsForm = ({ slug }) => {
     const commentObj = { name, email, comment, slug }
 
     // If the user wants us to save his name & email for next time
-    if(storeData) {
-      localStorage.setItem('name', name)
-      localStorage.setItem('email', email)
+    if (storeData) {
+      window.localStorage.setItem('name', name)
+      window.localStorage.setItem('email', email)
     } else {
-      localStorage.removeItem('name', name)
-      localStorage.removeItem('email', email)
+      window.localStorage.removeItem('name', name)
+      window.localStorage.removeItem('email', email)
     }
+
+    // Show a success message once the user submitted a comment
+    // Then hide it 3 secondes later
+    submitComment(commentObj).then((res) => {
+      setShowSuccessMessage(true)
+      setTimeout(() => {
+        setShowSuccessMessage(false)
+      }, 3000)
+    })
   }
 
   return (
     <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg">
-      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">CommentsForm</h3>
+      <h3 className="mb-8 border-b pb-4 text-xl font-semibold">What did you think of the article ? Leave a comment ! 👇</h3>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
           ref={commentEl}
@@ -64,14 +81,17 @@ const CommentsForm = ({ slug }) => {
       </div>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <div>
-          <input 
+          <input
             ref={storeDataEl}
-            type='checkbox'
-            name='storeData'
+            type="checkbox"
+            name="storeData"
             id="storeData"
-            value='true'
+            value="true"
           />
-          <label className='text-gray-500 cursor-pointer ml-2' htmlFor='storeData'>
+          <label
+            className="ml-2 cursor-pointer text-gray-500"
+            htmlFor="storeData"
+          >
             Save my e-mail & name for the next time I comment.
           </label>
         </div>

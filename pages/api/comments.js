@@ -1,12 +1,47 @@
-
-/* 
-* Any file inside the folder pages/api is mapped to /api/* and 
-* will be treated as an API endpoint instead of a page
-*/
-import { GraphQLClient, gql } from "graphql";
+/*
+ * Any file inside the folder pages/api is mapped to /api/* and
+ * will be treated as an API endpoint instead of a page
+ */
+import { GraphQLClient, gql } from 'graphql-request'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
+const graphcmsToken = process.env.GRAPHCMS_TOKEN
 
-export default function comments(params) {
-    
+export default async function comments(req, res) {
+
+    const { name, email, slug, comment } = req.body;
+  // adding authorization to connect to our graphcms api
+  const graphQLClient = new GraphQLClient(graphqlAPI, {
+    headers: {
+      authorization: `Bearer ${graphcmsToken}`,
+    },
+  })
+
+  // mutation means that we will either update some data or add new
+  // in this case it's to create new comments
+  const query = gql`
+    mutation CreateComment(
+      $name: String!
+      $email: String!
+      $comment: String!
+      $slug: String!
+    ) {
+      createComment(
+        data: {
+          name: $name
+          email: $email
+          comment: $comment
+          post: { connect: { slug: $slug } }
+        }
+      ) {
+        id
+      }
+    }
+  `
+    // req.body holds every values that we need (name, email, slug, comment)
+    const result = await graphQLClient.request(query, req.body)
+
+    // send the result to our front end
+    return res.status(200).send(result);
+
 }
