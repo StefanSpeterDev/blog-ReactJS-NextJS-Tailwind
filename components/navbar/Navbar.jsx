@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 import { getCategories } from '../../services'
+import Toggle from '../Toggle'
 
 const Navbar = () => {
   const [categories, setCategories] = useState([])
@@ -17,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="container relative mx-auto p-6">
+    <nav className="relative mx-auto p-6">
       <div className="flex items-center justify-between">
         <div className="pt-2">
           {/* Menu logo */}
@@ -29,6 +30,7 @@ const Navbar = () => {
         </div>
         {/* Menu items */}
         <div className="hidden space-x-6 md:flex">
+          <Toggle />
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
               <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-white transition duration-300 hover:text-gray-500">
@@ -40,22 +42,24 @@ const Navbar = () => {
         {/* Hamburger */}
         <button
           id="menu-btn"
-          class={`hamburger focus:outline:none block md:hidden ${navbar ? 'open' : ''}`}
+          className={`hamburger focus:outline:none block md:hidden ${
+            navbar ? 'open' : ''
+          }`}
           onClick={handleToggle}
         >
-          <span class="hamburger-top"></span>
-          <span class="hamburger-middle"></span>
-          <span class="hamburger-bottom"></span>
+          <span className="hamburger-top"></span>
+          <span className="hamburger-middle"></span>
+          <span className="hamburger-bottom"></span>
         </button>
       </div>
 
       {/* Mobile menu */}
 
-      <div class="md:hidden">
+      <div className="flex justify-end md:hidden">
         <div
           id="menu"
-          class={`absolute left-6 right-6 mt-10 z-10 flex-col items-center space-y-6 self-end bg-gray-200 py-8 font-bold drop-shadow-md sm:w-auto sm:self-center 
-          ${ navbar ? 'flex' : 'hidden'}`}
+          className={`z-10 mt-10 flex-col items-center space-y-6 bg-gray-400 py-8 font-bold drop-shadow-md sm:w-2/6 sm:self-center 
+          ${navbar ? 'flex' : 'hidden'}`}
         >
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
@@ -66,6 +70,7 @@ const Navbar = () => {
           ))}
         </div>
       </div>
+      <div className="border-blue-400 inline-block w-full border-b pb-8"></div>
     </nav>
   )
 }
