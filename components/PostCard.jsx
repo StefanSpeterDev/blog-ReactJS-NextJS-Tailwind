@@ -6,10 +6,11 @@ const PostCard = ({ post }) => {
   return (
     <div className="mb-8 rounded-lg bg-white p-0 pb-12 shadow-lg lg:p-8">
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
+        {/* Hero image */}
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className="absolute h-80 w-full rounded-t-lg object-cover object-top shadow-lg lg:rounded-lg"
+          className="absolute h-80 w-full rounded-t-lg object-cover object-center shadow-lg lg:rounded-lg"
         />
       </div>
       <h1
@@ -21,6 +22,7 @@ const PostCard = ({ post }) => {
       </h1>
       <div className="mb-8 block w-full items-center justify-center text-center lg:flex ">
         <div className="mb-4 mr-8 flex w-full items-center justify-center lg:mb-0 lg:w-auto">
+          {/* Author image */}
           <img
             alt={post.author.name}
             height="30px"
@@ -32,6 +34,7 @@ const PostCard = ({ post }) => {
             {post.author.name}
           </p>
         </div>
+        {/* Calendar */}
         <div className="font-medium text-gray-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
