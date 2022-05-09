@@ -53,7 +53,7 @@ const CommentsForm = ({ slug }) => {
   }
 
   return (
-    <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg">
+    <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg dark:bg-lightBlue">
       <h3 className="mb-8 border-b pb-4 text-xl font-semibold">What did you think of the article ? Leave a comment ! 👇</h3>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
@@ -103,7 +103,7 @@ const CommentsForm = ({ slug }) => {
         <button
           type="button"
           onClick={handleCommentSubmission}
-          className="ease inline-block cursor-pointer rounded-full bg-pink-600 px-8 py-3 text-lg text-white transition duration-500 hover:bg-indigo-900 "
+          className="ease inline-block cursor-pointer rounded-full bg-blue px-8 py-3 text-lg text-white transition duration-500 hover:bg-darkBlue"
         >
           Post Comment
         </button>

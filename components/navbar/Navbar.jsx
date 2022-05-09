@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="pt-2">
           {/* Menu logo */}
           <Link href="/">
-            <span className="cursor-pointer text-4xl font-bold text-white">
+            <span className="cursor-pointer text-4xl transition duration-300 font-bold text-lightDark hover:text-gray-500 dark:text-lightGrey dark:hover:text-blue">
               StefanSpeterDev
             </span>
           </Link>
@@ -33,7 +33,7 @@ const Navbar = () => {
           <Toggle />
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-white transition duration-300 hover:text-gray-500">
+              <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-lightDark transition duration-300 hover:text-gray-500 dark:text-lightGrey dark:hover:text-blue">
                 {category.name}
               </span>
             </Link>
@@ -70,7 +70,7 @@ const Navbar = () => {
           ))}
         </div>
       </div>
-      <div className="border-blue-400 inline-block w-full border-b pb-8"></div>
+      <div className="border-darkBlue inline-block w-full border-b pb-8 dark:border-white"></div>
     </nav>
   )
 }

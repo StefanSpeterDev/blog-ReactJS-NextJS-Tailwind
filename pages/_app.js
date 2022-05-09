@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider forcedTheme={Component.theme || undefined} attribute="class">
       <Layout>
-        <Component {...pageProps} />
+        <Component {...pageProps}/>
       </Layout>
     </ThemeProvider>
   )

@@ -5,7 +5,7 @@ import { FeaturedPosts } from '../sections'
 
 export default function Home({ posts }) {
   return (
-    <div className="container mx-auto mb-8 px-1 dark:bg-red-600">
+    <div className="container mx-auto mb-8 px-1">
       <Head>
         <title>Stefan Speter Blog</title>
         <link ref="icon" href="/favicon.ico" />
