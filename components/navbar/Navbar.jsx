@@ -33,7 +33,7 @@ const Navbar = () => {
           <Toggle />
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-lightDark transition duration-300 hover:text-gray-500 dark:text-lightGrey dark:hover:text-blue">
+              <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-lightDark transition duration-300 hover:text-lightBlue dark:text-lightGrey dark:hover:text-blue">
                 {category.name}
               </span>
             </Link>

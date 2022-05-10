@@ -9,4 +9,5 @@ export { default as PostDetail } from './PostDetail';
 export { default as FeaturedPostCard } from './FeaturedPostCard';
 export { default as Layout } from './Layout';
 export { default as Toggle } from './Toggle';
+export { default as Loader } from './Loader';
 
