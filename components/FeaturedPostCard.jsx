@@ -6,7 +6,7 @@ import Link from 'next/link'
 const FeaturedPostCard = ({ post }) => (
   <div className="relative h-72">
     <div
-      className="absolute inline-block h-72 w-full rounded-lg bg-cover bg-center bg-no-repeat shadow-md"
+      className="absolute inline-block h-72 w-full rounded-lg bg-cover bg-center bg-no-repeat shadow-md " 
       style={{ backgroundImage: `url('${post.featuredImage.url}')` }}
     />
     <div className="absolute h-72 w-full rounded-lg bg-gradient-to-b from-gray-400 via-gray-700 to-black bg-center opacity-50" />

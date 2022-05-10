@@ -2,7 +2,9 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 import { getCategoryPost, getCategories } from '../../services'
-import { PostCard, Categories, Loader } from '../../components'
+import { PostCard, Loader } from '../../components'
+
+// Page that list posts by the current category
 
 const CategoryPost = ({ posts }) => {
   const router = useRouter()
@@ -13,17 +15,10 @@ const CategoryPost = ({ posts }) => {
 
   return (
     <div className="container mx-auto mb-8 px-10">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-        <div className="col-span-1 lg:col-span-8">
-          {posts.map((post, index) => (
-            <PostCard key={index} post={post.node} />
-          ))}
-        </div>
-        <div className="col-span-1 lg:col-span-4">
-          <div className="relative top-8 lg:sticky">
-            <Categories />
-          </div>
-        </div>
+      <div className="flex flex-col gap-12 md:flex-row">
+        {posts.map((post, index) => (
+          <PostCard key={index} post={post.node} />
+        ))}
       </div>
     </div>
   )
