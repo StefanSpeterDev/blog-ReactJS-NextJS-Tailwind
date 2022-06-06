@@ -1,10 +1,24 @@
 import React from 'react'
 import moment from 'moment'
 
+import { RichText } from '@graphcms/rich-text-react-renderer';
+
+import Prism from 'prismjs';
+import 'prismjs/plugins/line-numbers/prism-line-numbers';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+/* React.useEffect(() => {
+  Prism.highlightAll();
+}, []);
+ */
 const PostDetail = ({ post }) => {
+
+  // Function to get elements from the Rich Text element
+  // TODO: Replace this with recommanded features from GCMS using their package to break it down
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
-
+    console.log(text)
     if (obj) {
       if (obj.bold) {
         modifiedText = <b key={index}>{text}</b>
@@ -29,6 +43,14 @@ const PostDetail = ({ post }) => {
           </h3>
         )
       case 'paragraph':
+        return (
+          <p key={index} className="mb-8">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </p>
+        )
+      case 'text':
         return (
           <p key={index} className="mb-8">
             {modifiedText.map((item, i) => (

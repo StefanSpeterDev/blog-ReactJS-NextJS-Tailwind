@@ -1021,6 +1021,21 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     "to-fast-properties" "^2.0.0"
 
+"@graphcms/rich-text-react-renderer@^0.5.0":
+  "integrity" "sha512-aNAUNSl45se7i0Ywwmdm2sj1kImwBFlvAW44fuwbGzgvErdDg++bl+vRhV4GE+bFjARsGRPlGWXcJGI/+bZRbg=="
+  "resolved" "https://registry.npmjs.org/@graphcms/rich-text-react-renderer/-/rich-text-react-renderer-0.5.0.tgz"
+  "version" "0.5.0"
+  dependencies:
+    "@graphcms/rich-text-types" "^0.4.0"
+    "escape-html" "^1.0.3"
+
+"@graphcms/rich-text-types@^0.4.0":
+  "integrity" "sha512-eqvI/FrtHH9k+AYpKJ6ZMlc8eZmwidam8YlObDD9wBfEJhK2vnQ7ERU01IGiq/jzwVdEPeId/AhQREZUFVaApg=="
+  "resolved" "https://registry.npmjs.org/@graphcms/rich-text-types/-/rich-text-types-0.4.0.tgz"
+  "version" "0.4.0"
+  dependencies:
+    "tslib" "^2.0.0"
+
 "@hapi/hoek@^9.0.0":
   "integrity" "sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ=="
   "resolved" "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz"
@@ -2472,7 +2487,7 @@
   "resolved" "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz"
   "version" "3.1.1"
 
-"escape-html@~1.0.3":
+"escape-html@^1.0.3", "escape-html@~1.0.3":
   "integrity" "sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg="
   "resolved" "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
   "version" "1.0.3"
@@ -4288,6 +4303,11 @@
     "ansi-styles" "^4.0.0"
     "react-is" "^17.0.1"
 
+"prismjs@^1.28.0":
+  "integrity" "sha512-8aaXdYvl1F7iC7Xm1spqSaY/OJBpYW3v+KJ+F17iYxvdc8sfjW194COK5wVhMZX45tGteiBQgdvD/nhxcRwylw=="
+  "resolved" "https://registry.npmjs.org/prismjs/-/prismjs-1.28.0.tgz"
+  "version" "1.28.0"
+
 "process-nextick-args@~2.0.0":
   "integrity" "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="
   "resolved" "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
@@ -4356,7 +4376,7 @@
     "prop-types" "^15.5.8"
     "react-side-effect" "^1.1.0"
 
-"react-dom@*", "react-dom@^16.8.0  || >=17.0.0 || >=18.0.0", "react-dom@^17.0.2", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>=0.14.0", "react-dom@>=16.8":
+"react-dom@*", "react-dom@^16.8.0  || >=17.0.0 || >=18.0.0", "react-dom@^17.0.2", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>=0.14.0", "react-dom@>=16", "react-dom@>=16.8":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -5294,7 +5314,7 @@
   "resolved" "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   "version" "0.0.3"
 
-"tslib@^2.0.1":
+"tslib@^2.0.0", "tslib@^2.0.1":
   "integrity" "sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
   "version" "2.4.0"
