@@ -1,21 +1,46 @@
 import React from 'react'
 import moment from 'moment'
 
-import { RichText } from '@graphcms/rich-text-react-renderer';
+import { RichText } from '@graphcms/rich-text-react-renderer'
 
-import Prism from 'prismjs';
-import 'prismjs/plugins/line-numbers/prism-line-numbers';
-import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import Prism from 'prismjs'
+import 'prismjs/plugins/line-numbers/prism-line-numbers'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 /* React.useEffect(() => {
   Prism.highlightAll();
 }, []);
  */
 const PostDetail = ({ post }) => {
-
   // Function to get elements from the Rich Text element
   // TODO: Replace this with recommanded features from GCMS using their package to break it down
+
+  // query example:
+  /* 
+    query MyQuery {
+  post(where: {slug: "drupal-flexible-content-using-paragraph"}) {
+    content {
+      json
+      html
+      markdown
+      text
+      references {
+        __typename
+        ... on Asset {
+          url
+          handle
+          }
+        }
+      }
+    }
+  }
+
+  Useful links:
+    https://github.com/GraphCMS/rich-text/tree/main/packages/react-renderer
+    https://graphcms.com/docs/api-reference/schema/field-types#rich-text
+    https://github.com/GraphCMS/rich-text/tree/main/packages/react-renderer
+  */
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text
     console.log(text)
