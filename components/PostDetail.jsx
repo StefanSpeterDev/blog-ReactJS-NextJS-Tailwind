@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 
 import { RichText } from '@graphcms/rich-text-react-renderer'
@@ -8,104 +8,10 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
-/* React.useEffect(() => {
-  Prism.highlightAll();
-}, []);
- */
 const PostDetail = ({ post }) => {
-  // Function to get elements from the Rich Text element
-  // TODO: Replace this with recommanded features from GCMS using their package to break it down
-
-  // query example:
-  /* 
-    query MyQuery {
-  post(where: {slug: "drupal-flexible-content-using-paragraph"}) {
-    content {
-      json
-      html
-      markdown
-      text
-      references {
-        __typename
-        ... on Asset {
-          url
-          handle
-          }
-        }
-      }
-    }
-  }
-
-  Useful links:
-    https://github.com/GraphCMS/rich-text/tree/main/packages/react-renderer
-    https://graphcms.com/docs/api-reference/schema/field-types#rich-text
-    https://github.com/GraphCMS/rich-text/tree/main/packages/react-renderer
-  */
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text
-    console.log(text)
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>
-      }
-    }
-
-    switch (type) {
-      case 'heading-three':
-        return (
-          <h3 key={index} className="mb-4 text-xl font-semibold">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        )
-      case 'paragraph':
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        )
-      case 'text':
-        return (
-          <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        )
-      case 'heading-four':
-        return (
-          <h4 key={index} className="text-md mb-4 font-semibold">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        )
-      case 'image':
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        )
-      default:
-        return modifiedText
-    }
-  }
-
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
   return (
     <article>
       <div className="mb-8 rounded-lg bg-white pb-12 shadow-lg dark:bg-lightBlue lg:p-8">
@@ -153,12 +59,18 @@ const PostDetail = ({ post }) => {
           <h1 className="mb-8 text-3xl font-semibold dark:text-blue">
             {post.title}
           </h1>
-          {post.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemIndex) =>
-              getContentFragment(itemIndex, item.text, item)
-            )
-            return getContentFragment(index, children, typeObj.type)
-          })}
+          <RichText
+            content={post.content.raw}
+            renderers={{
+              code_block: ({ children }) => {
+                return (
+                  <pre className="line-numbers language-none">
+                    <code>{children}</code>
+                  </pre>
+                )
+              },
+            }}
+          />
         </div>
       </div>
     </article>
