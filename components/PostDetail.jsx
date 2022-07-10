@@ -7,13 +7,14 @@ import Prism from 'prismjs'
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import Image from 'next/image';
 
 const PostDetail = ({ post }) => {
   useEffect(() => {
     Prism.highlightAll()
   }, [])
   return (
-    <article>
+    <article class="post-article">
       <div className="mb-8 rounded-lg bg-white pb-12 shadow-lg dark:bg-lightBlue lg:p-8">
         <div className="relative mb-6 overflow-hidden shadow-md">
           <img
@@ -69,6 +70,15 @@ const PostDetail = ({ post }) => {
                   </pre>
                 )
               },
+              img: ({ src, altText, height, width }) => (
+                <Image
+                  src={src}
+                  alt={altText}
+                  height={height}
+                  width={width}
+                  objectFit="cover"
+                />
+              ),
             }}
           />
         </div>
