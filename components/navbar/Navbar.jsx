@@ -29,8 +29,8 @@ const Navbar = () => {
           </Link>
         </div>
         {/* Menu items */}
-        <div className="hidden space-x-6 md:flex">
-          <Toggle />
+        <div className="invisible opacity-0 absolute space-x-6 md:flex md:relative md:visible md:opacity-100">
+          <Toggle/>
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
               <span className="ease mt-2 ml-4 cursor-pointer align-middle font-semibold text-lightDark transition duration-300 hover:text-lightBlue dark:text-lightGrey dark:hover:text-blue">
@@ -54,12 +54,11 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-
-      <div className="flex justify-end md:hidden">
+      <div className="flex justify-end md:hidden"> {/* This row hide the menu when in desktop view */}
         <div
           id="menu"
-          className={`z-10 mt-10 flex-col items-center space-y-6 bg-gray-400 py-8 font-bold drop-shadow-md sm:w-2/6 sm:self-center 
-          ${navbar ? 'flex' : 'hidden'}`}
+          className={`opacity-0 z-10 mt-10 flex-col w-full rounded-md items-center space-y-6 bg-nightBlue py-8 font-bold shadow-lg drop-shadow-md sm:w-2/6 sm:self-center
+          ${navbar ? 'flex visible relative transition-opacity duration-700 ease-in opacity-100 ' : ' invisible absolute'}`}
         >
           {categories.map((category) => (
             <Link key={category.slug} href={`/category/${category.slug}`}>
