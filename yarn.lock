@@ -2796,10 +2796,10 @@
     "extract-files" "^9.0.0"
     "form-data" "^3.0.0"
 
-"graphql@^16.4.0", "graphql@14 - 16":
-  "integrity" "sha512-tYDNcRvKCcfHREZYje3v33NSrSD/ZpbWWdPtBtUUuXx9NCo/2QDxYzNqCnMvfsrnbwRpEHMovVrPu/ERoLrIRg=="
-  "resolved" "https://registry.npmjs.org/graphql/-/graphql-16.4.0.tgz"
-  "version" "16.4.0"
+"graphql@^16.6.0", "graphql@14 - 16":
+  "integrity" "sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw=="
+  "resolved" "https://registry.npmjs.org/graphql/-/graphql-16.6.0.tgz"
+  "version" "16.6.0"
 
 "has-flag@^3.0.0":
   "integrity" "sha1-tdRU3CGZriJWmfNGfloH87lVuv0="
