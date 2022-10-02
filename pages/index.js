@@ -8,7 +8,7 @@ export default function Home({ posts }) {
     <div className="container mx-auto mb-8 px-1">
       <Head>
         <title>Stefan Speter Blog</title>
-        <link ref="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" />
       </Head>
       <FeaturedPosts />
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
